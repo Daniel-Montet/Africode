@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% load humanize %}
 
 {% block title %} {{ course.title }} {% endblock %}
 
@@ -6,6 +7,9 @@
 <article>
     <h2> {{ course.title }} </h2>
     {{ course.description }}
+
+    <p>There are {{ course.step_set.count|apnumber }} step{{ course.step_set.count|pluralize }} in this course</p>
+
     <section>
         {% for step in course.step_set.all %}
         <a href="{% url 'courses:step' course_pk=course.pk step_pk=step.pk %}">{{ step.title }}</a>
