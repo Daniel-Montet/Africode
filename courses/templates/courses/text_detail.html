@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ step.title }} - {{ step.course.title }}{% endblock %}
+
+{% block content %}
+<article>
+    <a href="{% url 'courses:detail' pk=step.course.pk%}">{{ step.course.title }}</a> 
+    <h3> {{ step.title }} </h3>
+    {% with con=step.content %}
+        {{ con|linebreaks }} content: {{ con|wordcount }} words.
+    {% endwith %}
+</article>
+{% endblock %}

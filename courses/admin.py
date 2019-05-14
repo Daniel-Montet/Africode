@@ -1,11 +1,10 @@
 from django.contrib import admin
 
-from .models import Course, Step
+from . import models
 # Register your models here.
-class StepInline(admin.StackedInline):
-    model =Step
 
-class CourseAdmin(admin.ModelAdmin):
-    inlines = [StepInline,]
-
-admin.site.register(Course,CourseAdmin)
+admin.site.register(models.Course)
+admin.site.register(models.Quiz)
+admin.site.register(models.Text)
+admin.site.register(models.Answer)
+admin.site.register(models.Question)
