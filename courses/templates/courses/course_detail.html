@@ -4,19 +4,28 @@
 {% block title %} {{ course.title }} {% endblock %}
 
 {% block content %}
-<article>
-    <h2> {{ course.title }} </h2>
-    {{ course.description}}
+<div>
+    <article>
+        <h2> {{ course.title }} </h2>
+        {{ course.description}}
+    
+        <!-- <p>There are {{ course.step_set.count|apnumber }} step{{ course.step_set.count|pluralize }} in this course</p> -->
+    
+        <section>
+            {% for step in steps %}
+            <a href="{{ step.get_absolute_url }}">{{ step.title }}</a>
+            <!-- <a href="{% url 'courses:text' course_pk=course.id step_pk=step.id %}">{{ step.title }}</a> -->
+            {{ step.description }}
+            {% endfor %}
+        </section>
+    </article>
+    {% if user.is_authenticated %}
+        <a href="{% url 'courses:create_quiz' course_pk=course.id %}">New Quiz</a>
+        <hr>
 
-    <!-- <p>There are {{ course.step_set.count|apnumber }} step{{ course.step_set.count|pluralize }} in this course</p> -->
+    {% endif %}
+</div>
 
-    <section>
-        {% for step in steps %}
-        <a href="{{ step.get_absolute_url }}">{{ step.title }}</a>
-        {{ step.description }}
-        {% endfor %}
-    </section>
-</article>
 
 
 {% endblock %}

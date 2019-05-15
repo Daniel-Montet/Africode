@@ -1,0 +1,23 @@
+{%  extends "layout.html" %}
+{% load course_extras %}
+
+{% block title %}{{form.instance.prompt|default:"New Question for {{ quiz.title }} | {{ quiz.course.title }} "}} {% endblock %}
+
+<li><a href="{% url 'courses:detail' pk=quiz.course.pk %}">{{ quiz.course.title }}</a></li>
+<li><a href="{% url 'courses:quiz' course_pk=quiz.course.pk step_pk=quiz.pk%}">{{ quiz.title }}</a></li>
+
+{% block content %}
+    <div>
+        <h1>{{ form.instance.prompt|default:Make a new question}}</h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="save">
+        </form>
+    </div>
+    {% if user.is_authenticated  %}
+        {% if quiz %}
+    <a href="{% url 'courses:edit_question' quiz_pk=quiz.id question_pk=quiz.id %}">Edit Question</a>
+        {% endif %}
+    {% endif %}
+{% endblock %}

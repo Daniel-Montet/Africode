@@ -5,9 +5,10 @@
 {% block content %}
 <article>
     <a href="{% url 'courses:detail' pk=step.course.pk%}">{{ step.course.title }}</a> 
-    <h3> {{ step.title }} </h3>
-    {% with con=step.content %}
+    <p> {{ step.title }} </p>
+     <p>{{ step.content }}</p>
+    <!-- {% with con=step.content %}
         {{ con|linebreaks }} content: {{ con|wordcount }} words.
-    {% endwith %}
+    {% endwith %}  -->
 </article>
 {% endblock %}

@@ -57,8 +57,11 @@ class Question(models.Model):
     def __str__(self):
         return self.prompt
 
-class MulitipleChoiceQuestion(Question):
+class MultipleChoiceQuestion(Question):
     shuffle_answers = models.BooleanField(default=False)
+
+    # def get_absolute_url(self):
+    #     return reverse('courses:')
 
 class TrueFalseQuestion(Question):
     pass
