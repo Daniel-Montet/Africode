@@ -1,0 +1,82 @@
+body{
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+}
+
+#header-with-navbar{
+    position: fixed;
+    padding: 0;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+}
+
+.nav-colored { background-color:#39353e; opacity: 0.8; color: white; }
+.nav-transparent { background-color:transparent;}
+
+.header-top{
+    background-color: #04091e;
+    height: 2rem;
+}
+#top-nav-container{
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+}
+#top-nav-row{
+
+    margin-left: 10%;
+    margin-right:10%;
+}
+
+#navbar-container{
+    padding: 0;
+}
+
+.fab,.fas,.far{
+    color: white;
+}
+
+.fa-envelope, .fa-phone{
+    margin-right:auto;
+}
+
+#social-network-icons-layout-page{
+    font-size: 12px;
+}
+#contact-icons-layout-page{
+    text-align: right;
+    font-size: 12px;
+}
+
+/* #body-block-content{
+    margin-top: 5rem;
+    padding: 0;
+} */
+
+
+
+#landing-page-intro{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    
+}
+
+#landing-page-intro-img{
+    width: inherit; 
+    height: inherit;
+    /* max-width: 1600px; */
+    display: block;
+    margin: 0 auto;
+    object-fit: fill;
+}
+
+#landing-page-intro-text{
+    
+}
