@@ -1,17 +1,17 @@
 window.onload = function() {
-    var ball = document.getElementById('ball');
-    ball.style.marginLeft = "25px";
+    var ball = document.querySelector('.landing-page-intro-content');
+    // ball.style.marginTop = "-100px";
+    console.log(ball);
+    ball.classList.add("landing-page-intro-content-animate");
 };
 
 window.onscroll = function () { 
     "use strict";
-    var navbar = document.getElementById('navbar');
+    var navbar = document.getElementById('navbar-container');
     if (document.body.scrollTop >= 200 ) {
         navbar.classList.add("nav-colored");
-        navbar.classList.remove("nav-transparent");
     } 
     else {
-        navbar.classList.add("nav-transparent");
         navbar.classList.remove("nav-colored");
     }
 };

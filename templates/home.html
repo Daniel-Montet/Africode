@@ -1,17 +1,121 @@
-<!-- {% extends "layout.html" %}
+{% extends "layout.html" %}
 {% load course_extras %}
 
 {% block title%} Home Page {%endblock%}
 
 {% block content %}
 <div class="container-fluid" id="landing-page-intro">
-    <img id="landing-page-intro-img" src="static/images/landingpageintroimg.jpg" alt="" class="img-responsive">
+    <img id="landing-page-intro-img" src="static/images/john-schnobrich-520023-unsplash.jpg" alt=""
+        class="img-responsive">
     <div id="landing-page-intro-text">
-            <p>Dont miss our latest course, {% newest_course %}!</p>
-            <div class="ball" id="ball">
-                    Well hello there
-            </div>
-    </div>   
+        <!-- <p>Dont miss our latest course, {% newest_course %}!</p> -->
+        <div class="landing-page-intro-content" id="intro-animate">
+            <h1>WE ENSURE BETTER EDUCATION
+                FOR A BETTER WORLD</h1>
+            <p>It is a long established fact that a reader will be distracted by the readable content of a
+                page when looking at its layout</p>
+            <button>Sign up and get 7-days free</button>
+        </div>
+    </div>
 </div>
+<div class="container" id="single-feature-container">
+    <div class="row" id="single-feature-row">
+        <div class="col-md-4">
+            <div class="single-feature">
+                <div class="single-feature-title">
+                    <h4>The standard Lorem</h4>
+                </div>
+                <div class="single-feature-description">
+                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has
+                        roots in a piece of classical Latin literature from 45 BC, making it
+                        over 2000 years old.</p>
+                    <a href="">join now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="single-feature">
+                <div class="single-feature-title">
+                    <h4>The standard Lorem</h4>
+                </div>
+                <div class="single-feature-description">
+                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has
+                        roots in a piece of classical Latin literature from 45 BC, making it
+                        over 2000 years old.</p>
+                    <a href="">join now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="single-feature">
+                <div class="single-feature-title">
+                    <h4>The standard Lorem</h4>
+                </div>
+                <div class="single-feature-description">
+                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has
+                        roots in a piece of classical Latin literature from 45 BC, making it
+                        over 2000 years old.</p>
+                    <a href="">join now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" id="popular-courses-container">
+    <div class="row" id="popular-courses-call-to-action">
+        <div>
+            <h4>Popular Courses we offer</h4>
+            <p>Some text can be added here</p>
+        </div>
+    </div>
+    <div class="row" id="popular-courses-slider">
+        <div class="col-md-3 col-lg-3" id="popular-course-div">
+            <div class="popular-course">
+                <img src="static/images/landingpageintroimg.jpg" alt="">
+            </div>
+            <div class="popular-course-description">
+                <h6>Course Title</h6>
+                <p>Some text describing the course here</p>
+            </div>
+        </div>
 
-{% endblock %} -->
+        <div class="col-md-3 col-lg-3">
+            <div class="popular-course">
+                <img src="static/images/landingpageintroimg.jpg" alt="">
+            </div>
+            <div class="popular-course-description">
+                <h6>Course Title</h6>
+                <p>Some text describing the course here</p>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-lg-3">
+            <div class="popular-course">
+                <img src="static/images/landingpageintroimg.jpg" alt="">
+            </div>
+            <div class="popular-course-description">
+                <h6>Course Title</h6>
+                <p>Some text describing the course here</p>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-lg-3" >
+            <div class="popular-course">
+                <img src="static/images/landingpageintroimg.jpg" alt="">
+            </div>
+            <div class="popular-course-description">
+                <h6>Course Title</h6>
+                <p>Some text describing the course here</p>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- <div id="parallax-container">
+    <div id="parallax">
+            <h1>Parallax Effect</h1>
+            <p>Pure Css //No javascript</p>
+    </div>
+</div> -->
+{% endblock %}

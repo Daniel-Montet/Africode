@@ -1,0 +1,18 @@
+{%  extends "layout.html" %}
+{% load course_extras %}
+
+{% block title %} question | {{ question.prompt }} | {{ question.quiz.course.title }}{{block.super}} {% endblock %}
+
+<li><a href="{% url 'courses:detail' pk=quiz.course.pk %}">{{ question.quiz.course.title }}</a></li>
+<li><a href="{% url 'courses:quiz' course_pk=quiz.course.pk step_pk=quiz.pk%}">{{ question.quiz.title }}</a></li>
+
+{% block content %}
+    <div>    
+        <h1>Answers</h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ formset }}
+            <input type="submit" value="save">
+        </form>
+    </div>
+{% endblock %}

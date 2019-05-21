@@ -1,23 +1,56 @@
 {%  extends "layout.html" %}
 {% load course_extras %}
 
-{% block title %}{{form.instance.prompt|default:"New Question for {{ quiz.title }} | {{ quiz.course.title }} "}} {% endblock %}
+{% block title %} {{form.instance.prompt|default:"New Question" }} | {{ quiz.course.title }}{{block.super}} {% endblock %}
 
-<li><a href="{% url 'courses:detail' pk=quiz.course.pk %}">{{ quiz.course.title }}</a></li>
-<li><a href="{% url 'courses:quiz' course_pk=quiz.course.pk step_pk=quiz.pk%}">{{ quiz.title }}</a></li>
+
 
 {% block content %}
+<li><a href="{% url 'courses:detail' pk=quiz.course.pk %}">{{ quiz.course.title }}</a></li>
+<li><a href="{% url 'courses:quiz' course_pk=quiz.course.pk step_pk=quiz.pk%}">{{ quiz.title }}</a></li>
     <div>
-        <h1>{{ form.instance.prompt|default:Make a new question}}</h1>
+        
+        <h3>{{ form.instance.prompt|default:"Make a new question"}}</h3>
         <form action="" method="POST">
             {% csrf_token %}
             {{ form.as_p }}
+
+            {{ formset.management_form }}
+
+            <table role="grid" class="stack hover" style="width:100%">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center" style="width: 10%">Order</th>
+                        <th scope="col" class="text-center">Text</th>
+                        <th scope="col" class="text-center" style="width: 10%">Correct?</th>
+                        <th scope="col" class="text-center" style="width: 10%">Delete?</th>
+                    </tr>
+                </thead>
+                <tbody class="order">
+                    {% for form in formset %}
+                        <tr {% if form.instance.pk %} item {% else %} new {% endif %}>
+                            <td> {{ form.id }} {{ form.order }}</td>
+                            <td> {{ form.text }} </td>
+                            <td> {{ form.correct }} </td>
+                            {%  if form.instance.pk %}
+                                <td> {{ form.DELETE }} </td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}    
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
             <input type="submit" value="save">
         </form>
     </div>
-    {% if user.is_authenticated  %}
-        {% if quiz %}
-    <a href="{% url 'courses:edit_question' quiz_pk=quiz.id question_pk=quiz.id %}">Edit Question</a>
-        {% endif %}
-    {% endif %}
 {% endblock %}
+<!-- 
+{% block css %}
+    {{ form.media.css }}    
+{% endblock %}
+
+{% block javascript %}
+{% load static from staticfiles %}
+    {{ form.media.js }}
+{% endblock %} -->
