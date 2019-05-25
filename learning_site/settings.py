@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'rest_framework',
     'courses',
 )
 
@@ -112,3 +113,13 @@ EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'suggestions')
 # MEDIA_ROOT = [
 #     'jquery.formset.js',
 # ]
+
+#REST FRAMEWORK
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES':(
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES':(
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    )
+}

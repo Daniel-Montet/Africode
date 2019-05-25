@@ -20,9 +20,11 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     url(r'^courses/', include('courses.urls', namespace='courses')),
+    url(r'^api/v1/courses', include('courses.api_urls', namespace='courses_api')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^suggest/$', views.suggestion_view, name='suggestion'),
-    url(r'^$', views.home_page),
+    url(r'^$', views.home_page, name='home'),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

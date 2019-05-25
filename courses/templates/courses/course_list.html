@@ -6,21 +6,57 @@
 {% endblock %}
 
 {% block content %}
+<div class="container" id="courselist-container">
+    <div class="row">
+        <div class="course-list-intro container-fluid">
+            <hr>
+            <h5>Browse Tracks</h5>
+            <p>Some of the most popular courses students start with</p>
+        </div>
 
-{% for course in courses %}
-<div class="card">
-    <a class="card-title" href="{% url 'courses:detail' pk=course.pk %}">{{course.title}}</a>
-    <div class="card-body">
-        {% if course.description|wordcount <= 5 %}
-        <p>{{course.description}}</p>
-        {% else %}
-        <p>{{ course.description|truncatewords:5 }}</p>
-        <a href="{% url 'courses:detail' pk=course.pk %}">Read more</a>
-        {% endif %}
-        <div>Created on: {{ course.created_at|date:"F j, Y" }}</div>
+    </div>
+    <div class="row">
+        {% for course in courses %}
+        <div class="col-md-4">
+            <a class="card-box" href="{% url 'courses:detail' pk=course.pk %}">
+                <div class="card-progress">
+                    <i class="fas fa-code"></i>
+                    Created on: {{ course.created_at|date:"F j, Y" }}
+                </div>
+                <p class="card-type">Track</p>
+                <h3 class="card-title">{{course.title}}</h3>
+                {% if course.description|wordcount <= 5 %}
+                <p class="card-description">{{course.description}</p>
+                {% else %}
+                <p class="card-description">{{course.description|truncatewords:12}}</p>
+                {% endif %}
+            </a>
+            <div class="card-actions container">
+                <div class="row" id="card-actions-container">
+                        <div class="card-action secondary-action">
+                                <a href="{% url 'courses:detail' pk=course.pk %}" class="button secondary">Explore</a>
+                        </div>
+                        <div class="card-action secondary card-action-trailer">
+                                <a href="#" data-toggle="tooltip" data-placement="top"
+                                    title="Tooltip on top">
+                                    <i class="far fa-play-circle fa-2x"></i>
+                                </a>
+                        </div>
+                        <div class="card-action secondary" data-toggle="tooltip" data-placement="top"
+                                title="Tooltip on top">
+                                <i class="fas fa-money-check-alt fa-2x"></i>
+                        </div>
+                        <div class="card-action secondary" data-toggle="tooltip" data-placement="top"
+                                title="Tooltip on top">
+                                <i class="far fa-building fa-2x"></i>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
     </div>
 </div>
-{% endfor %}
-<div>Have Questions? Contact us! {{ email|urlize }}</div> 
+<div>Have Questions? Contact us! {{ email|urlize }}</div>
 
 {% endblock %}

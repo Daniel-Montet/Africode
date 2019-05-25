@@ -1,0 +1,246 @@
+body{
+
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.625em;
+    position: relative;
+    font-family: "Poppins",sans-serif;
+    color: #777;
+    background: white;
+}
+
+a{
+    color: white;
+}
+a:hover{
+    color: #f7631b;
+}
+
+h1{
+    color: White;
+    font-size: 30px;
+    font-weight: 700; 
+
+}
+
+
+/* layout.html starts here */
+#header-with-navbar{
+    position: fixed;
+    padding: 0;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+}
+
+.nav-colored { background-color:rgba(4,9,30,0.9); opacity: 0.8; color: white; }
+.nav-transparent { background-color:transparent;}
+
+.hide{ display: none; transition: 12s all ease-in-out;}
+
+.header-top{
+    background-color: #04091e;
+    height: 1.7rem;}
+#top-nav-container{
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+}
+#top-nav-row{
+    margin-left: 13%;
+    margin-right:13%;
+}
+
+#social-network-icons-layout-page{
+    font-size: 12px;
+    /* margin-top: 1%; */
+}
+#contact-icons-layout-page{
+    text-align: right;
+    font-size: 10px;
+    /* margin-top: 1%; */
+}
+
+#navbar-container{
+    padding: 0;
+}
+
+.fab,.fas,.far{
+    color: white;
+}
+
+.fab:hover,.fas:hover,.far:hover{
+    color: #f7631b;
+}
+
+
+#body-block-content{
+    padding: 0;
+}
+
+.navbar.navbar-expand-lg {
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #39353e;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#navbar-row{
+    margin-left: 17%;
+    margin-right:17%;
+}
+.navbar-toggler-icon{
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.9)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+#logo-anchor-tag{
+    margin-left: -12px;
+}
+#logo{
+    height: 1.5rem;
+    width: 7rem;
+}
+#basicExampleNav{
+    margin-left: 55% ;
+    font-size: 12px;
+}
+
+.page-footer{
+    background: #04091e;
+    color: white;
+    font-size: 12px;
+    margin-bottom: 0;
+}
+.page-footer a:hover{
+    color:  #f7631b; 
+}
+/* layout.html ends here */
+
+
+
+
+/* home.html starts here */
+
+#landing-page-intro{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    
+}
+
+#landing-page-intro-img{
+    width: inherit; 
+    height: inherit;
+    display: block;
+    margin: 0 auto;
+    object-fit: fill;
+    filter: brightness(20%)
+}
+
+#landing-page-intro-text{
+    position: absolute;
+    /* line-height: 1.2em !important; */
+    top: 35%;
+    margin-left: 17%;
+    margin-right: 17%;
+    font-size: 12px;
+}
+.landing-page-intro-content{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 1s all ease-in-out;
+    max-width: 75%;
+    padding: 0;
+    margin: 0;
+    width: 75%;
+}
+
+.landing-page-intro-content-animate{
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+button{
+    background: #f7631b;
+    border: 0;
+    color: whitesmoke;
+    height: 2rem;
+    
+}
+
+button:hover{
+    background: white;
+    color: #f7631b;
+}
+
+
+#single-feature-row{
+    margin-left: 12%;
+    margin-right: 12%;
+    margin-top: -55px;
+}
+
+.single-feature h4{
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.single-feature-title{
+    background: rgba(255,255,255,0.15);
+    padding: 15px 0px;
+    color: white;
+    border-bottom: 1px solid white;
+    text-align: center;
+}
+
+.single-feature-title:hover{
+    background: #f7631b;
+    color: white; 
+}
+
+#popular-courses-container{
+    margin-top: 5%;
+    margin-bottom: 12%;
+}
+
+#popular-courses-call-to-action{
+    text-align: center;
+    padding-left: 23%;
+    margin-left: 16%;
+    margin-right: 16%;
+}
+
+#popular-courses-call-to-action h4, .popular-course-description h6{
+    color: #222;
+    font-weight: 700;
+}
+
+#popular-courses-slider{
+    margin-top: 5%;
+    margin-left: 16%;
+    margin-right: 16%;
+}
+
+.popular-course{
+    height: 9rem;
+    width: 12rem;
+}
+.popular-course img{
+    /* height: 2%;
+    width: 2%; */
+    height: inherit;
+    width: inherit;
+    object-fit: cover;
+}
+
+.popular-course-description{
+    margin-top: 2%;
+    text-align: center;
+    width: 12rem;}
+
+
+/* home.html ends here */

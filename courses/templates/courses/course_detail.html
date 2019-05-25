@@ -1,34 +1,82 @@
 {% extends "layout.html" %}
+{% load static from staticfiles %}
+{% block static %}
+
+<link rel="stylesheet" href="{% static 'courses/css/courses.css' %}">
+{% endblock %}
 {% load humanize %}
 
 {% block title %} {{ course.title }} {% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container" id="courselist-container">
     <div class="row">
-        <div class="card col-md-4">
-            <div class="card-title">
-                {{ course.title }}
-            </div>
-            <div class="card-body">
-                <p>{{ course.description}}</p>
+        <div class="col-md-6">
                 {% for step in steps %}
-                <a href="{{ step.get_absolute_url }}"><h6>{{ step.title }}</h6></a>
-                {{ step.description|markdown_to_html }}
-                {% if step.question_set.all %}
-                    <p>Total Questions</p>
-                    <p>{{ step.question_set.count }}</p>
-            </div>
-            <div class="card-footer">
-                {% if user.is_authenticated %}
-                <a href="{% url 'courses:create_quiz' course_pk=course.id %}">New Quiz</a>
-
+            <a class="card-box" href="{{step.get_absolute_url }}">
+                <div class="card-progress">
+                    <i class="fas fa-book-open fa-lg"></i>
+                    <!-- Created on: {{ step.created_at|date:"F j, Y" }} -->
+                </div>
+                <p class="card-type">Track</p>
+                <h3 class="card-title">{{step.title}}</h3>
+                {% if step.description|wordcount <= 5 %}
+                <p class="card-description">{{step.description}}</p>
+                            {% else %}
+                            <p class="card-description">{{step.description|truncatewords:12}}</p>
                 {% endif %}
+                
+            </a>            
+            <div class="card-actions container">
+                <div class="row" id="card-actions-container">
+                    <div class="card-action secondary-action">
+                        <a href="{% url 'courses:detail' pk=course.pk %}" class="button secondary">{{ course.subject }}</a>
+                    </div>
+                </div>
+                <div class="quizz">
+                        {% if step.question_set.all %}
+                        <span>Total Questions</span>
+                        <span>{{ step.question_set.count }}</span>
+                           
+                </div>
+                <div class="quizz">
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'courses:create_quiz' course_pk=course.id %}">New Quiz</a>
+        
+                        {% endif %}
+                        {% endif %}
+                </div>               
             </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-6">
+                
+                <a class="card-box-detail-page" href="{% url 'courses:detail' pk=course.pk %}">
+                        <p class="card-type">Track</p>
+                        <h3 class="card-title">Exploring {{course.title}}</h3>
+                        {% if course.description %}
+                        <p class="card-description">{{course.description}}</p>
+                        {% endif %}
+                    </a>
+                    <div class="card-actions container">
+                        <div class="row" id="card-actions-container">
+                                <div class="card-action secondary card-action-trailer">
+                                        <a href="#" data-toggle="tooltip" data-placement="top"
+                                            title="Tooltip on top">
+                                            <i class="far fa-play-circle fa-2x"></i>
+                                        </a>
+                                </div>
+                                <div class="card-action secondary" data-toggle="tooltip" data-placement="top"
+                                        title="Tooltip on top">
+                                        <i class="fas fa-money-check-alt fa-2x"></i>
+                                </div>
+                                <div class="card-action secondary" data-toggle="tooltip" data-placement="top"
+                                        title="Tooltip on top">
+                                        <i class="far fa-building fa-2x"></i>
+                                </div>
+                        </div>
+                    </div>
         </div>
     </div>
 </div>
-
-
-
 {% endblock %}

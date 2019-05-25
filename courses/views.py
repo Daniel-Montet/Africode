@@ -5,14 +5,22 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render
 from django.db.models import Q
 
+
+from rest_framework import generics
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+
 from itertools import chain
+
 
 from . import models
 from . import forms
+from . import serializers
 # Create your views here.
 
 def course_list(request):
-    courses = models.Course.objects.all(published=True)
+    courses = models.Course.objects.filter(published=True)
     email = 'questions@learning_site.com'
     return render(request, 'courses/course_list.html', {'courses': courses, 'email':email})
 
@@ -20,7 +28,7 @@ def course_detail(request, pk):
     course = get_object_or_404(models.Course,pk=pk, published=True)
     try:
         course = models.Course.objects.prefetch_related(
-            'quiz__set', 'text__set', 'quiz_set__question_set'
+            'quiz_set', 'text_set', 'quiz_set__question_set'
         ).get(pk=pk, published=True)
     except models.Course.DoesNotExist:
         raise Http404
@@ -158,3 +166,13 @@ def search(request):
             published=True 
         )
     return render(request, 'courses/course_list.html', {'courses': courses})
+
+
+#API views start here
+class ListCreateCourse(generics.ListCreateAPIView):
+    queryset = models.Course.objects.all()
+    serializer_class = serializers.CourseSerializer
+
+class RetrieveUpdateDestroyCourse(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.Course.objects.all()
+    serializer_class = serializers.CourseSerializer

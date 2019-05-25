@@ -8,11 +8,20 @@ window.onload = function() {
 window.onscroll = function () { 
     "use strict";
     var navbar = document.getElementById('navbar-container');
+    var element = document.querySelector('.header-top');
     if (document.body.scrollTop >= 200 ) {
         navbar.classList.add("nav-colored");
     } 
     else {
         navbar.classList.remove("nav-colored");
     }
+    
+    if (document.body.scrollTop >= 450 ) {
+        element.classList.add("hide");
+    } 
+    else {
+        element.classList.remove("hide");
+    }
 };
+
 
