@@ -45,7 +45,7 @@ def text_detail(request, course_pk, step_pk):
 
 def quiz_detail(request, course_pk, step_pk):
     try:
-        step = models.Quiz.objects.select__related('course').get(
+        step = models.Quiz.objects.select_related('course').get(
             course_id=course_pk, pk=step_pk, course__published=True
         )
     except models.Quiz.DoesNotExist:
@@ -53,9 +53,9 @@ def quiz_detail(request, course_pk, step_pk):
     else:
         return render(request, 'courses/quiz_detail.html',{'step': step})
 
-@login_required
+# @login_required
 def quiz_create(request, course_pk):
-    course = get_object_or_404(models.Course, pk=course_pk, course__published=True)
+    course = get_object_or_404(models.Course, pk=course_pk, published=True)
     form = forms.QuizForm()
 
     if request.method == 'POST':
@@ -68,7 +68,7 @@ def quiz_create(request, course_pk):
             return HttpResponseRedirect(quiz.get_absolute_url())
     return render(request, 'courses/quiz_form.html', {'form': form})
 
-@login_required
+# @login_required
 def quiz_edit(request, course_pk, quiz_pk):
     quiz = get_object_or_404(models.Quiz, pk=quiz_pk, course_id=course_pk, course__published=True)
     form = forms.QuizForm(instance=quiz)
@@ -80,9 +80,9 @@ def quiz_edit(request, course_pk, quiz_pk):
             return HttpResponseRedirect(quiz.get_absolute_url())
     return render(request, 'courses/quiz_form.html', {'form': form})
 
-@login_required
+# @login_required
 def create_question(request, quiz_pk, question_type):
-    quiz = get_object_or_404(models.Quiz, pk=quiz_pk, published=True)
+    quiz = get_object_or_404(models.Quiz, pk=quiz_pk, course__published=True)
     if question_type == 'tf':
         form_class = forms.TrueFalseQuestionForm
     else:
@@ -111,7 +111,7 @@ def create_question(request, quiz_pk, question_type):
             'formset': answer_forms,
             })
 
-@login_required
+# @login_required
 def edit_question(request, quiz_pk, question_pk):
     question = get_object_or_404(models.Question, pk=question_pk, quiz_id=quiz_pk)
     if hasattr(question, 'truefalsequestion'):
@@ -137,7 +137,7 @@ def edit_question(request, quiz_pk, question_pk):
     return render(request, 'courses/question_form.html', {'form': form, 'quiz': question.quiz,'formset': answer_forms,})
 
 
-@login_required
+# @login_required
 def answer_form(request, question_pk):
     question = get_object_or_404(models.Question, pk=question_pk)
     formset = forms.AnswerFormSet(queryset=question.answer_set.all())

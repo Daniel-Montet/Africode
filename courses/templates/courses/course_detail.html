@@ -14,11 +14,17 @@
         <div class="col-md-6">
                 {% for step in steps %}
             <a class="card-box" href="{{step.get_absolute_url }}">
-                <div class="card-progress">
-                    <i class="fas fa-book-open fa-lg"></i>
-                    <!-- Created on: {{ step.created_at|date:"F j, Y" }} -->
+                {% if step.question_set %}
+                <div class="card-progress-quizz">
+                        <i class="far fa-file-code fa-lg"></i>
                 </div>
-                <p class="card-type">Track</p>
+                <p class="card-type">Quiz</p>
+                {% else %}
+                <div class="card-progress">
+                        <i class="fas fa-book-open fa-lg"></i>
+                </div>
+                <p class="card-type">Course</p>
+                {% endif %}
                 <h3 class="card-title">{{step.title}}</h3>
                 {% if step.description|wordcount <= 5 %}
                 <p class="card-description">{{step.description}}</p>
@@ -33,19 +39,22 @@
                         <a href="{% url 'courses:detail' pk=course.pk %}" class="button secondary">{{ course.subject }}</a>
                     </div>
                 </div>
-                <div class="quizz">
-                        {% if step.question_set.all %}
+                {% if step.question_set.all %}
+                <div class="questions-total">
+                        
                         <span>Total Questions</span>
                         <span>{{ step.question_set.count }}</span>
                            
                 </div>
+                {% elif not step.question_set %}
                 <div class="quizz">
-                        {% if user.is_authenticated %}
+                        
                         <a href="{% url 'courses:create_quiz' course_pk=course.id %}">New Quiz</a>
         
-                        {% endif %}
-                        {% endif %}
-                </div>               
+                        
+                </div> 
+                {% endif %}
+                        
             </div>
             {% endfor %}
         </div>
@@ -62,16 +71,16 @@
                         <div class="row" id="card-actions-container">
                                 <div class="card-action secondary card-action-trailer">
                                         <a href="#" data-toggle="tooltip" data-placement="top"
-                                            title="Tooltip on top">
+                                            title="For video content!">
                                             <i class="far fa-play-circle fa-2x"></i>
                                         </a>
                                 </div>
                                 <div class="card-action secondary" data-toggle="tooltip" data-placement="top"
-                                        title="Tooltip on top">
+                                        title="Average skill networth">
                                         <i class="fas fa-money-check-alt fa-2x"></i>
                                 </div>
                                 <div class="card-action secondary" data-toggle="tooltip" data-placement="top"
-                                        title="Tooltip on top">
+                                        title="Include major companies using this technology">
                                         <i class="far fa-building fa-2x"></i>
                                 </div>
                         </div>

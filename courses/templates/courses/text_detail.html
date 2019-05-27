@@ -1,14 +1,18 @@
 {% extends "layout.html" %}
-
+{% load static from staticfiles %}
 {% block title %}{{ step.title }} - {{ step.course.title }}{% endblock %}
+{% block static %}
 
+<link rel="stylesheet" href="{% static 'courses/css/courses.css' %}">
+{% endblock %}
 {% block content %}
-<article>
-    <a href="{% url 'courses:detail' pk=step.course.pk%}">{{ step.course.title }}</a> 
-    <p> {{ step.title }} </p>
-     <p>{{ step.content }}</p>
-    <!-- {% with con=step.content %}
-        {{ con|linebreaks }} content: {{ con|wordcount }} words.
-    {% endwith %}  -->
-</article>
+<div class="container text-detail-container">
+        <h1><a href="{% url 'courses:detail' pk=step.course.pk%}">{{ step.course.title }}</a></h1> 
+        <h3> {{ step.title }} </h3>
+         <p>{{ step.description }}</p>
+         {% with con=step.content %}
+        <p>{{ con|linebreaks }} </p>
+        content: {{ con|wordcount }} words.
+        {% endwith %} 
+</div>
 {% endblock %}

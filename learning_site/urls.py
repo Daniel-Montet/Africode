@@ -24,6 +24,8 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^suggest/$', views.suggestion_view, name='suggestion'),
     url(r'^$', views.home_page, name='home'),
+    url(r'^about-us$', views.aboutus_view, name='about_us'),
+    url(r'^blog$', views.blog_view, name='blog'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
 

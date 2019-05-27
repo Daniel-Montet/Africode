@@ -13,3 +13,7 @@ def nav_courses_list():
     ''' Returns dictionary of courses to display as navigation pane '''
     courses = Course.objects.filter(published=True).values()[:5]
     return {'courses': courses}
+
+@register.filter(name='addcss')
+def addcss(field, css):
+    return field.as_widget(attrs={"class":css})

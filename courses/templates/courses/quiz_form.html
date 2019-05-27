@@ -1,10 +1,29 @@
 {% extends "layout.html" %}
-<!-- {% block title %} {{form.instance.title|default:"New Quiz"}} | {{course.title}} {{ block.super }} {% endblock %} -->
+{% load course_extras %}
+{% load static from staticfiles %}
+{% block title %} {{form.instance.title|default:"New Quiz"}} | {{course.title}} {{ block.super }} {% endblock %}
+{% block static %}
+
+<link rel="stylesheet" href="{% static 'courses/css/courses.css' %}">
+{% endblock %}
 {% block content %}
-<form action="" method="POST">
-    <h1>{{form.instance.title|default:"Make a New Quiz"}}</h1>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="save">
-</form>
+<div class="container quiz-form">
+        <form action="" method="POST">
+            <h3>{{form.instance.title|default:"-Make a New Quiz-"}}</h3>
+            {% csrf_token %}
+            <div><label class="quiz-labels" for="{{ form.title.id_for_label }}">Title</label>
+                {{ form.title }}</div>
+            <div><label class="quiz-labels" for="{{ form.description.id_for_label }}">Description</label>
+                {{ form.description }}</div>
+            
+            <div><label class="quiz-labels" for="{{ form.total_questions.id_for_label }}">No. of Questions</label>
+                {{ form.total_questions }}</div>
+            <div><label class="quiz-labels" for="{{ form.order.id_for_label }}">Order</label>
+                {{ form.order }}</div>
+            <button type="submit" class="btn btn-outline-blue-grey waves-effect"><span id="save">Save</span></button>
+
+        </form>
+        
+</div>
+
 {% endblock %}

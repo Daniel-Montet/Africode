@@ -24,3 +24,9 @@ def suggestion_view(request):
             messages.add_message(request, messages.SUCCESS,'Thanks for your suggestion!')
             return HttpResponseRedirect(reverse('suggestion'))
     return render(request,'suggestion_form.html', {'form': form})
+
+def aboutus_view(request):
+    return render(request, 'about.html')
+
+def blog_view(request):
+    return render(request, 'blog.html')

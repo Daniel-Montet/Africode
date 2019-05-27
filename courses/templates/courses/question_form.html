@@ -1,56 +1,67 @@
 {%  extends "layout.html" %}
 {% load course_extras %}
+{% load static from staticfiles %}
+{% block static %}
 
-{% block title %} {{form.instance.prompt|default:"New Question" }} | {{ quiz.course.title }}{{block.super}} {% endblock %}
+<link rel="stylesheet" href="{% static 'courses/css/courses.css' %}">
+{% endblock %}
+
+{% block title %} {{form.instance.prompt|default:"New Question" }} | {{ quiz.course.title }}{{block.super}}
+{% endblock %}
 
 
 
 {% block content %}
-<li><a href="{% url 'courses:detail' pk=quiz.course.pk %}">{{ quiz.course.title }}</a></li>
-<li><a href="{% url 'courses:quiz' course_pk=quiz.course.pk step_pk=quiz.pk%}">{{ quiz.title }}</a></li>
-    <div>
-        
-        <h3>{{ form.instance.prompt|default:"Make a new question"}}</h3>
-        <form action="" method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
+<div class="container question-form-container">
+    <a class="breadcrumbs" href="{% url 'courses:detail' pk=quiz.course.pk %}">
+        <h6><i class="fas fa-angle-left"></i> {{ quiz.course.title }} /</h6>
+    </a>
 
-            {{ formset.management_form }}
+    <a class="breadcrumbs" href="{% url 'courses:quiz' course_pk=quiz.course.pk step_pk=quiz.pk%}">
+        <h6>{{ quiz.title }}</h6>
+    </a>
+    <div class=" container question-form-content">
+        <div>
+            <h6><i class="far fa-hand-point-down"></i> {{ form.instance.prompt|default:"Make a new question"}} :</h6>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div><label class="question-labels" for="{{ form.prompt.id_for_label }}">Prompt</label>
+                    {{ form.prompt }}</div>
+                <div><label class="question-labels" for="{{ form.order.id_for_label }}">Order</label>
+                    {{ form.order }}</div>
 
-            <table role="grid" class="stack hover" style="width:100%">
-                <thead>
-                    <tr>
-                        <th scope="col" class="text-center" style="width: 10%">Order</th>
-                        <th scope="col" class="text-center">Text</th>
-                        <th scope="col" class="text-center" style="width: 10%">Correct?</th>
-                        <th scope="col" class="text-center" style="width: 10%">Delete?</th>
-                    </tr>
-                </thead>
-                <tbody class="order">
-                    {% for form in formset %}
-                        <tr {% if form.instance.pk %} item {% else %} new {% endif %}>
-                            <td> {{ form.id }} {{ form.order }}</td>
-                            <td> {{ form.text }} </td>
-                            <td> {{ form.correct }} </td>
-                            {%  if form.instance.pk %}
+                <div class="table-responsive z-depth-1">
+                    <table class="table ">
+                        <thead class="grey lighten-2">
+                            <tr>
+                                <th scope="col">Order</th>
+                                <th scope="col">Text</th>
+                                <th scope="col">Correct?</th>
+                                <th scope="col">Delete?</th>
+                            </tr>
+                        </thead>
+                        {{ formset.management_form }}
+                        <tbody class="order">
+                            {% for form in formset %}
+                            <tr {% if form.instance.pk %} item {% else %} new {% endif %}>
+                                <td> {{ form.id }} {{ form.order }}</td>
+                                <td> {{ form.text }} </td>
+                                <td> {{ form.correct }} </td>
+                                {%  if form.instance.pk %}
                                 <td> {{ form.DELETE }} </td>
-                            {% else %}
+                                {% else %}
                                 <td></td>
-                            {% endif %}    
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <input type="submit" value="save">
-        </form>
-    </div>
-{% endblock %}
-<!-- 
-{% block css %}
-    {{ form.media.css }}    
-{% endblock %}
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
 
-{% block javascript %}
-{% load static from staticfiles %}
-    {{ form.media.js }}
-{% endblock %} -->
+                <input type="submit" value="save" class="btn btn-outline-blue-grey waves-effect save">
+            </form>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

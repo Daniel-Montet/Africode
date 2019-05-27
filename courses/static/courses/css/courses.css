@@ -29,6 +29,11 @@ a{
 #navbar-container a:hover, #contact-icons-layout-page a:hover{
     color: #f7631b;
 }
+#dropdown-menu a{
+    color: black;
+    font-size: 12px;
+}
+
 
 #contact-icons-layout-page a{
     color: white;
@@ -92,9 +97,27 @@ a{
     height: 58px;
     line-height: 58px;
     padding: 0 30px;
-    background-color: #55616c;
+    background-color: darkslategray;
     transition: background-color 300ms 0s ease;
 
+}
+
+.card-progress-quizz{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    border-radius: 4px 4px 0 0;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    justify-items: center;
+    height: 58px;
+    line-height: 58px;
+    padding: 0 30px;
+    background: #55616c;
 }
 
 .card-type {
@@ -125,14 +148,6 @@ a{
 }
 
 .card-actions {
-    /* pointer-events: none; */
-    /* list-style: none; */
-    /* display: block; */
-    /* position: absolute; */
-    /* left: 45px;
-    right: 45px;
-    bottom: 30px; */
-    /* z-index: 1; */
     box-shadow: 0 2px 0 rgba(0,0,0,0.06);
     padding-bottom: 20px;
     padding-top: 0;
@@ -140,11 +155,6 @@ a{
     background: white;
     
 }
-
-/* #card-actions-container{
-    padding-top: 0;
-
-} */
 
 .card-action {
     position: relative;
@@ -177,7 +187,137 @@ a{
     line-height: 36px;
 }
 
+.questions-total{
+    margin-top: -5%;
+    margin-left: 35%;
+}
+
 .quizz{
     float: right;
     margin-top: -5%;
+    margin-left: 5%;
 }
+
+
+/* Quiz form starts here */
+.quiz-form{
+    margin-top: 5%;
+}
+/* Quiz form ends here */
+
+/* text-detail starts here */
+.text-detail-container{
+    margin-top: 5%;
+    margin-bottom: 15%;
+    background: white;
+
+}
+.text-detail-container a{
+    color: #777;
+}
+/* text-detail ends here */
+
+/* quiz form starts here */
+
+.quiz-form{
+margin-top: 8%;
+margin-bottom: 20%;
+font-weight: bold;
+
+}
+.quiz-form h1{
+    color: #777;
+    
+}
+
+.btn{
+    border-radius: 35px;
+    margin-top: 2%;
+    height: 2.5rem;
+    float: right;
+}
+
+#save{
+    margin-bottom: 5%;
+}
+
+.title, .description, .order, .questions, .quiz-labels{
+ margin-top: 1%;
+}
+/* quiz form ends here */
+
+/* quiz-detail starts here */
+.quiz-detail-container{
+    margin-top: 8%;
+    margin-bottom: 25%;
+    
+}
+
+
+.quiz-detail-content-container{
+    background: white;
+    font-size: 15px;
+}
+
+.quiz-detail-container a{
+    color: #78909c;
+}
+.quiz-detail-content{
+    padding-top: 2%;
+    padding-bottom: 10%;
+    list-style: square;
+}
+
+.quiz-detail-container a, .quiz-detail-container .far, .quiz-detail-container .fas {
+    color: #78909c;
+}
+
+#call-to-action{
+  padding-bottom: 2%;
+}
+
+.quiz-detail-container .far, .quiz-detail-container .fas{
+    margin-right: 5px;
+    padding: 0;
+}
+#edit-question{
+    margin-left: 80%;
+}
+
+/* quiz-detail ends here */
+
+/* question form starts here */
+.question-form-container{
+   margin-top: 8%;
+   margin-bottom: 20%;
+}
+
+.question-form-content{
+    padding: 0;
+}
+.table-responsive{
+    margin-top: 2%;
+}
+
+.save{
+    margin-left: 50rem;
+}
+
+.breadcrumbs{
+    display: inline-block;
+    color: #78909c;
+}
+
+.question-form-container .fas, .question-form-container .far, .question-form-content h6{
+    color: #78909c;
+    margin-right: 5px;
+
+}
+
+.question-form-content h6{
+    margin-top: 3%;
+    margin-bottom: 2%;
+}
+
+
+/* question form ends here */

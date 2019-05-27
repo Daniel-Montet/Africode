@@ -1,32 +1,43 @@
 {% extends "layout.html" %}
-
+{% load static from staticfiles %}
 {% block title %}{{ step.title }} - {{ step.course.title }}{% endblock %}
+{% block static %}
 
+<link rel="stylesheet" href="{% static 'courses/css/courses.css' %}">
+{% endblock %}
 {% block content %}
-<article>
-    <a href="{% url 'courses:detail' pk=step.course.pk%}">{{ step.course.title }}</a>
-    <h3> {{ step.title }} </h3>
-    {% for question in step.question_set.all %}
-        <li>
-            <p>{{ question.prompt }}</p>
-            {% for answer in question.answer_set.all %}
-                <div>{{answer.text}}</div>
+
+<div class="container quiz-detail-container">
+    <a href="{% url 'courses:detail' pk=step.course.pk%}">
+        <h6><i class="fas fa-angle-left"></i> {{ step.course.title }} /</h6>
+    </a>
+    <div class="container quiz-detail-content-container z-depth-1 rounded">
+        <div class="quiz-detail-content">
+                <h6 id="call-to-action"><i class="far fa-hand-point-down"></i> {{ step.title }} : </h6>
+            {% for question in step.question_set.all %}
+            <ul>
+                <li>
+                    <p>{{ question.prompt }}</p>
+                    {% for answer in question.answer_set.all %}
+                    <ul>
+                        <li>{{answer.text}}</li>
+                    </ul>
+                    {% endfor %}
+
+                    <a id="edit-question" href="{% url 'courses:edit_question' question_pk=question.pk quiz_pk=step.pk %}"><i class="far fa-edit fa-sm"> <small>Edit Question</small></i></a>
+
+                </li>
+            </ul>
+
             {% endfor %}
-            {% if user.is_authenticated %}
-                <a href="{% url 'courses:edit_question' question_pk=question.pk quiz_pk=step.pk %}">Edit</a>
-            {% endif %}
-        </li>
-    {% endfor %}
-    {% with con=step.content %}
-        {{ con|linebreaks }} content: {{ con|wordcount }} words.
-    {% endwith %}
-</article>
-{% if user.is_authenticated %}
-<hr>
-<a href="{% url 'courses:edit_quiz' course_pk=step.course.pk quiz_pk=step.pk %}"><button>Edit</button></a>
-<a href="{% url 'courses:create_question' quiz_pk=step.pk question_type='mc'%}"><button>New Multiple Choice
+        </div>
+
+    </div>
+    <a href="{% url 'courses:create_question' quiz_pk=step.pk question_type='mc'%}"><button class="btn btn-outline-blue-grey waves-effect"> <i class="far fa-plus-square"></i>  New Multiple Choice
         Question</button></a>
-<a href="{% url 'courses:create_question' quiz_pk=step.pk question_type='tf'%}"><button>New True/False
+<a href="{% url 'courses:create_question' quiz_pk=step.pk question_type='tf'%}"><button class="btn btn-outline-blue-grey waves-effect"><i class="far fa-plus-square"></i>  New True/False
         Question</button></a>
-{% endif %}
+    <a href="{% url 'courses:edit_quiz' course_pk=step.course.pk quiz_pk=step.pk %}"><button class="btn btn-outline-blue-grey waves-effect"><i class="fas fa-pen-alt"></i> Edit</button></a>
+</div>
+
 {% endblock %}
