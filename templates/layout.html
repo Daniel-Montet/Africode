@@ -18,223 +18,220 @@
   {% block static %}{% endblock %}
 </head>
 
-<body onload="preload()">
-<div id="loader"></div> 
-<div class="myDiv">
-    <header id="header-with-navbar">
+<body>
+  <header id="header-with-navbar">
 
-        <div class="header-top">
-          <div class="container" id="top-nav-container">
-            <div class="row" id="top-nav-row">
-              <div class="col-lg-6 col-sm-6 col-6" id="social-network-icons-layout-page">
-                <a><i class="fab fa-facebook-f ml-0 fa-xs"></i></a>
-                <a><i class="fab fa-twitter ml-3 fa-xs"></i></a>
-                <a><i class="fab fa-instagram ml-3 fa-xs"></i></a>
-                <a><i class="fab fa-linkedin-in ml-3  fa-xs"></i></a>
-              </div>
-              <div class="col-lg-6 col-sm-6 col-4" id="contact-icons-layout-page">
-                <a href="mailto:dmontetproff@gmail.com">dmontetproff@gmail.com</a>
-                <a href="tel:254702644342" class="ml-2">+254 702 644 342</a>
-              </div>
-            </div>
+    <div class="header-top">
+      <div class="container" id="top-nav-container">
+        <div class="row" id="top-nav-row">
+          <div class="col-lg-6 col-sm-6 col-6" id="social-network-icons-layout-page">
+            <a><i class="fab fa-facebook-f ml-0 fa-xs"></i></a>
+            <a><i class="fab fa-twitter ml-3 fa-xs"></i></a>
+            <a><i class="fab fa-instagram ml-3 fa-xs"></i></a>
+            <a><i class="fab fa-linkedin-in ml-3  fa-xs"></i></a>
+          </div>
+          <div class="col-lg-6 col-sm-6 col-4" id="contact-icons-layout-page">
+            <a href="mailto:dmontetproff@gmail.com">dmontetproff@gmail.com</a>
+            <a href="tel:254702644342" class="ml-2">+254 702 644 342</a>
           </div>
         </div>
-        <div class="container-fluid" id="navbar-container">
-          <div id="navbar-row">
-              <nav class="navbar navbar-expand-lg">
-                  <a id="logo-anchor-tag" href="{% url 'home' %}"><img id="logo" src="{% static 'images/logo_transparent (3).png' %}" alt="Africode"></a>               
-                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-                    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="basicExampleNav">
-                    <ul class="navbar-nav mr-auto">
-                      <!-- <form action="{% url 'courses:search' %}" method="GET">
-                          <li class="nav-item">
-                              <input type="search" name="q">
-                          </li>
-                          <button class="secondary small" type="submit">Search</button>
-                      </form> -->
-                      <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'home' %}">Home
-                        </a>
-                      </li>
-                      <li class="nav-item active">
-                          <a class="nav-link" href="{% url 'about_us' %}">About
-                          </a>
-                      </li>
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                          aria-expanded="false" href="{% url 'courses:list' %}">Courses
-                        </a>
-                        <div class="dropdown-menu dropdown-primary" id="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                         {% nav_courses_list %}
-                         <a href="{% url 'courses:list' %}">see all</a>
-                        </div>
-                      </li>
-                      <li class="nav-item active">
-                          <a class="nav-link" href="{% url 'blog' %}">Blog
-                            <span class="sr-only"></span>
-                          </a>
-                      </li>
+      </div>
+    </div>
+    <div class="container-fluid" id="navbar-container">
+      <div id="navbar-row">
+          <nav class="navbar navbar-expand-lg">
+              <a id="logo-anchor-tag" href="{% url 'home' %}"><img id="logo" src="{% static 'images/logo_transparent (3).png' %}" alt="Africode"></a>               
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="basicExampleNav">
+                <ul class="navbar-nav mr-auto">
+                  <!-- <form action="{% url 'courses:search' %}" method="GET">
                       <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
+                          <input type="search" name="q">
                       </li>
-            
-                    </ul>
-                  </div>
-              </nav>
-          </div>
-        </div>
-    
-    
-      </header>
-    
-    
-      {% if messages %}
-      <div>
-        <div>
-          {% for message in messages %}
-          {{ message }}
-          {% endfor %}
-        </div>
-      </div>
-      {% endif %}
-    
-      <div class="container-fluid" id="body-block-content">
-        {% block content %}
-        {% endblock %}
-      </div>
-    
-      <footer class="page-footer font-small pt-4">
-        <div class="container text-center text-md-left">
-          <div class="row text-center text-md-left mt-3 pb-3">
-            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-              <h6 class="text-uppercase mb-4 font-weight-bold">Africode</h6>
-              <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-                consectetur
-                adipisicing elit.</p>
-            </div>
-            <!-- Grid column -->
-      
-            <hr class="w-100 clearfix d-md-none">
-      
-            <!-- Grid column -->
-            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-              <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
-              <p>
-                <a href="#!">MDBootstrap</a>
-              </p>
-              <p>
-                <a href="#!">MDWordPress</a>
-              </p>
-              <p>
-                <a href="#!">BrandFlow</a>
-              </p>
-              <p>
-                <a href="#!">Bootstrap Angular</a>
-              </p>
-            </div>
-            <!-- Grid column -->
-      
-            <hr class="w-100 clearfix d-md-none">
-      
-            <!-- Grid column -->
-            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-              <h6 class="text-uppercase mb-4 font-weight-bold">Useful links</h6>
-              <p>
-                <a href="#!">Your Account</a>
-              </p>
-              <p>
-                <a href="#!">Become an Affiliate</a>
-              </p>
-              <p>
-                <a href="#!">Shipping Rates</a>
-              </p>
-              <p>
-                <a href="#!">Help</a>
-              </p>
-            </div>
-      
-            <!-- Grid column -->
-            <hr class="w-100 clearfix d-md-none">
-      
-            <!-- Grid column -->
-            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-              <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-              <p>
-                <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
-              <p>
-                <i class="fas fa-envelope mr-3"></i> dmontetproff@gmail.com</p>
-              <p>
-                <i class="fas fa-phone mr-3"></i> + 254 702 644 342</p>
-              <p>
-                <i class="fas fa-print mr-3"></i> + 254 734 560 629</p>
-            </div>
-            <!-- Grid column -->
-      
-          </div>
-          <!-- Footer links -->
-      
-          <hr>
-      
-          <!-- Grid row -->
-          <div class="row d-flex align-items-center">
-      
-            <!-- Grid column -->
-            <div class="col-md-7 col-lg-8">
-      
-              <!--Copyright-->
-              <p class="text-center text-md-left">© 2018 Copyright:
-                <a href="https://mdbootstrap.com/education/bootstrap/">
-                  <strong> MDBootstrap.com</strong>
-                </a>
-              </p>
-      
-            </div>
-            <!-- Grid column -->
-      
-            <!-- Grid column -->
-            <div class="col-md-5 col-lg-4 ml-lg-0">
-      
-              <!-- Social buttons -->
-              <div class="text-center text-md-right">
-                <ul class="list-unstyled list-inline">
-                  <li class="list-inline-item">
-                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                      <i class="fab fa-facebook-f"></i>
+                      <button class="secondary small" type="submit">Search</button>
+                  </form> -->
+                  <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'home' %}">Home
                     </a>
                   </li>
-                  <li class="list-inline-item">
-                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                      <i class="fab fa-twitter"></i>
-                    </a>
+                  <li class="nav-item active">
+                      <a class="nav-link" href="{% url 'about_us' %}">About
+                      </a>
                   </li>
-                  <li class="list-inline-item">
-                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                      <i class="fab fa-google-plus-g"></i>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false" href="{% url 'courses:list' %}">Courses
                     </a>
+                    <div class="dropdown-menu dropdown-primary" id="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                     {% nav_courses_list %}
+                     <a href="{% url 'courses:list' %}">see all</a>
+                    </div>
                   </li>
-                  <li class="list-inline-item">
-                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                      <i class="fab fa-linkedin-in"></i>
-                    </a>
+                  <li class="nav-item active">
+                      <a class="nav-link" href="{% url 'blog' %}">Blog
+                        <span class="sr-only"></span>
+                      </a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                  </li>
+        
                 </ul>
               </div>
-      
-            </div>
-            <!-- Grid column -->
-      
-          </div>
-          <!-- Grid row -->
-      
+          </nav>
+      </div>
+    </div>
+
+
+  </header>
+
+
+  {% if messages %}
+  <div>
+    <div>
+      {% for message in messages %}
+      {{ message }}
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="container-fluid" id="body-block-content">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+  <footer class="page-footer font-small pt-4">
+    <div class="container text-center text-md-left">
+      <div class="row text-center text-md-left mt-3 pb-3">
+        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+          <h6 class="text-uppercase mb-4 font-weight-bold">Africode</h6>
+          <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
+            consectetur
+            adipisicing elit.</p>
         </div>
-        <!-- Footer Links -->
-      
-    </footer>
-    
-</div>
+        <!-- Grid column -->
+  
+        <hr class="w-100 clearfix d-md-none">
+  
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+          <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+          <p>
+            <a href="#!">MDBootstrap</a>
+          </p>
+          <p>
+            <a href="#!">MDWordPress</a>
+          </p>
+          <p>
+            <a href="#!">BrandFlow</a>
+          </p>
+          <p>
+            <a href="#!">Bootstrap Angular</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+  
+        <hr class="w-100 clearfix d-md-none">
+  
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+          <h6 class="text-uppercase mb-4 font-weight-bold">Useful links</h6>
+          <p>
+            <a href="#!">Your Account</a>
+          </p>
+          <p>
+            <a href="#!">Become an Affiliate</a>
+          </p>
+          <p>
+            <a href="#!">Shipping Rates</a>
+          </p>
+          <p>
+            <a href="#!">Help</a>
+          </p>
+        </div>
+  
+        <!-- Grid column -->
+        <hr class="w-100 clearfix d-md-none">
+  
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+          <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+          <p>
+            <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+          <p>
+            <i class="fas fa-envelope mr-3"></i> dmontetproff@gmail.com</p>
+          <p>
+            <i class="fas fa-phone mr-3"></i> + 254 702 644 342</p>
+          <p>
+            <i class="fas fa-print mr-3"></i> + 254 734 560 629</p>
+        </div>
+        <!-- Grid column -->
+  
+      </div>
+      <!-- Footer links -->
+  
+      <hr>
+  
+      <!-- Grid row -->
+      <div class="row d-flex align-items-center">
+  
+        <!-- Grid column -->
+        <div class="col-md-7 col-lg-8">
+  
+          <!--Copyright-->
+          <p class="text-center text-md-left">© 2018 Copyright:
+            <a href="https://mdbootstrap.com/education/bootstrap/">
+              <strong> MDBootstrap.com</strong>
+            </a>
+          </p>
+  
+        </div>
+        <!-- Grid column -->
+  
+        <!-- Grid column -->
+        <div class="col-md-5 col-lg-4 ml-lg-0">
+  
+          <!-- Social buttons -->
+          <div class="text-center text-md-right">
+            <ul class="list-unstyled list-inline">
+              <li class="list-inline-item">
+                <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                  <i class="fab fa-google-plus-g"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+  
+        </div>
+        <!-- Grid column -->
+  
+      </div>
+      <!-- Grid row -->
+  
+    </div>
+    <!-- Footer Links -->
+  
+</footer>
+
 
 
   <!-- JQuery -->
