@@ -460,8 +460,14 @@ h6 {
         text-align: justify;
         word-break: break-all;
     }
+
+    .blog-img-div{
+        width: 58vw;
+    }
+
+    .blog-container {
+        margin-top: 25%;
+    }
     
 }
-
-
 
