@@ -117,8 +117,8 @@ h1 {
 }
 
 #navbar-row {
-    margin-left: 17%;
-    margin-right: 17%;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 .navbar-toggler-icon {
@@ -180,8 +180,8 @@ h1 {
     position: absolute;
     /* line-height: 1.2em !important; */
     top: 35%;
-    margin-left: 17%;
-    margin-right: 17%;
+    margin-left: 20%;
+    margin-right: 20%;
     font-size: 12px;
 }
 
@@ -365,15 +365,103 @@ h6 {
 
     body{
         font-size: 16px;
+        background: whitesmoke;
+    }
+    #top-nav-container{
+        padding: 0;
+        margin:0;
+    }
+    #top-nav-row{
+        margin-left: 3%;
+        margin-right: 3%;
     }
 
-    .header-top{
+    #social-network-icons-layout-page {
+        font-size: 14px;
+    }
+    #contact-icons-layout-page .mobile{
         display: none;
     }
     
+    
     #navbar-row{
         margin: 0;
+
+    }
+
+    .navbar .navbar-toggler {
+        background: inherit;
+        opacity: 0.8;
+    }
+
+    .landing-page-intro-content{
+        width: 100%;
+        max-width: 100%;
+        margin-left: 5%;
+        height: 80vw;
+    }
+
+    .landing-page-intro-content a{
+        margin-top: 2%;
+        margin-left: 19%;
+    }
+    .landing-page-intro-content button{
+        margin-top: 15vw;
+    }
+
+    #landing-page-intro{
+        height: 86vh;
+
+    }
+
+    #landing-page-intro-text{
+        top: 20%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .landing-page-intro-content h1{
+        font-size: 2em;
+    }
+    .landing-page-intro-content p{
+        font-size: 16px;
+    }
+
+    .single-feature-title{
+        background: #f7631b;
+    }
+    .single-feature h4{
+        color: white;
+    }
+
+    #popular-courses-call-to-action{
+        margin-right: 26%;
+        margin-left: 0;
+        padding-left: 13%;
+    }
+
+    .about-us-page-intro-wrapper {
+        margin-bottom: 300%;
+    }
+
+    .about-us-page-intro-image {
+        margin-bottom: 50%;
+        width: inherit;
+        height: 240%;
+        display: block;
+        margin: 0 auto;
+        filter: brightness(10%);
+    }
+
+    .about-us-page-container{
+        margin-left: 5%;
+        margin-right: 5%;
+        line-height: 1.6em;
+        text-align: justify;
+        word-break: break-all;
     }
     
-    
 }
+
+
+

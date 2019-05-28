@@ -7,6 +7,7 @@ body{
     font-family: "Poppins",sans-serif;
     color: #777;
     background: #edeff0;
+    overflow-x: hidden;
 }
 
 a{
@@ -175,6 +176,10 @@ a{
     color: #576366;
 }
 
+.card-actions-container{
+    width: inherit;
+}
+
 .button.secondary, .button-secondary {
     background-color: transparent;
     border: solid 2px #d4d9dd;
@@ -321,3 +326,39 @@ font-weight: bold;
 
 
 /* question form ends here */
+
+@media only screen and (max-width: 600px){
+    #courselist-container{
+        margin-top: 15%;
+        font-size: 12px;
+    }
+    .questions-total{
+        margin-left: 56vw;
+    }
+
+    .quizz a{
+        color: #777;
+    }
+
+    .quiz-detail-container {
+        margin-top: 21%;
+        margin-bottom: 70%;
+        width: 100vw;
+    }
+    #edit-question {
+        margin-left: 50vw;
+    }
+
+    .quiz-detail-content-container {
+        margin-bottom: 6%;
+    }
+
+    .save{
+        margin-left: 60vw;
+        margin-top: 5%;
+    }
+
+    .question-form-container{
+        margin-top: 21%;
+    }
+}
